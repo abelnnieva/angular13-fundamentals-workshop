@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Course } from '../common/models/course';
 import { CoursesService } from '../common/services/courses.service';
 
@@ -16,7 +17,8 @@ const emptyCourse: Course = {
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  courses = [];
+  // courses = [];
+  courses$: Observable<Course[]>;
   selectedCourse = emptyCourse;
   originalTitle = '';
 
@@ -31,9 +33,7 @@ export class CoursesComponent implements OnInit {
   }
 
   fetchCourses() {
-    this.coursesService
-      .all()
-      .subscribe((result: any) => (this.courses = result));
+    this.courses$ = this.coursesService.all();
   }
 
   saveCourse(course) {
