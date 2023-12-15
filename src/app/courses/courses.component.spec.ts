@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoursesService } from '../shared/services/courses.service';
 import { CoursesComponent } from './courses.component';
 
 describe('CoursesComponent', () => {
@@ -9,15 +8,8 @@ describe('CoursesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesComponent ],
-      providers: [
-        {
-          provide: CoursesService,
-          useValue: jasmine.createSpyObj('CoursesService', ['getAllCourses', 'updateCourse', 'createCourse', 'deleteCourse'])
-        }
-      ]
-    })
-    .compileComponents();
+      declarations: [CoursesComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
